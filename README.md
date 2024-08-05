@@ -1,4 +1,4 @@
-# Pathfinding Algorithm Visualization using OSMnx and Folium
+# Pathfinding Algorithm Comparing Dijkstra's vs BFS with Visualizations using OSMnx and Folium
 
 ## Project Overview
 
