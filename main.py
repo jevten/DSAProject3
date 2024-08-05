@@ -116,8 +116,21 @@ shortest_path_bfs = bfs_path(G, source_node, destination_node)
 end_time_bfs = time.time()
 bfs_time = end_time_bfs - start_time_bfs
 
+#display algorithim times to compare
+print()
 print(f"Dijkstra's algorithm execution time: {dijkstra_time:.6f} seconds")
 print(f"BFS execution time: {bfs_time:.6f} seconds")
+
+#clear the map to prepare for the final map with highlighted paths
+m = folium.Map(location=[center_lat, center_lon], zoom_start=14)
+#remove the blue edges in the map so final map with routes isnt cluttered
+for _, row in edges.iterrows():
+    folium.PolyLine(locations=[(lat, lon) for lat, lon in zip(row['geometry'].xy[1], row['geometry'].xy[0])],
+                    color='white', weight=2.5, opacity=1).add_to(m)
+
+#highlight source and destination nodes
+folium.CircleMarker(location=(G.nodes[source_node]['y'], G.nodes[source_node]['x']), radius=7, color='blue', fill=True, fill_color='blue', popup='Source').add_to(m)
+folium.CircleMarker(location=(G.nodes[destination_node]['y'], G.nodes[destination_node]['x']), radius=7, color='orange', fill=True, fill_color='orange', popup='Destination').add_to(m)
 
 # Highlight the shortest path for Dijkstra's algorithm in folium
 path_edges_dijkstra = [(shortest_path_dijkstra[i], shortest_path_dijkstra[i+1]) for i in range(len(shortest_path_dijkstra)-1)]
@@ -140,7 +153,10 @@ for u, v in path_edges_bfs:
     folium.PolyLine(points, color='purple', weight=5, opacity=0.7, tooltip="BFS path").add_to(m)
 
 # Display HTML file
+print()
 print("Displaying updated map in browser.")
+print("Blue circle represents source node, Orange represents destination node")
+print("***In event of one path, it means two paths overlap***")
 html_file_with_paths = 'map_with_shortest_paths.html'
 m.save(html_file_with_paths)
 webbrowser.open(html_file_with_paths)
