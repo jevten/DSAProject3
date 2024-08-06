@@ -2,6 +2,7 @@
 
 ## Project Overview
 TA Note: Commits are from one user... worked together in-person
+
 This project visualizes the shortest paths between nodes on a map using Dijkstra's algorithm and Breadth-First Search (BFS). 
 The map data is retrieved using the OSMnx library which creates a graph with all nodes, and the visualization is done using the Folium library. 
 The project allows users to select a place, visualize the map, and interactively choose source and destination nodes to compare the performance 
