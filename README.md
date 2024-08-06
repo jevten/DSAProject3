@@ -8,7 +8,7 @@ The project allows users to select a place, visualize the map, and interactively
 and paths of Dijkstra's and BFS algorithms.
 
 ## Features
-
+- Basic GUI for input handling and results
 - Retrieve and visualize map data for any specified location.
 - Highlight the shortest paths using Dijkstra's algorithm and BFS.
 - Interactive selection of source and destination nodes.
@@ -29,6 +29,7 @@ and paths of Dijkstra's and BFS algorithms.
 - collections: For data structures like deque.
 - heapq: For implementing the priority queue in Dijkstra's algorithm.
 - time: For measuring the execution time of the algorithms.
+- tkinter: For creating GUI.
 
 ### Installation
 
