@@ -11,7 +11,6 @@ import os
 
 #dijkstra's implementation inspired from 8b slide pseudocode
 def dijkstra(G, source, target):
-    print("hi")
     #priority queue for tuples dij implementation
     queue = [(0, source)]
     #dict to store prev node and distances
